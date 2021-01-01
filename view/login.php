@@ -2,9 +2,9 @@
 
 use view\view;
 
+view::view('header');
+view::view('navbar');
 ?>
-<?php view::view('header'); ?>
-<?php view::view('navbar'); ?>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-md-3">
@@ -14,13 +14,18 @@ use view\view;
 				<div class="index-area-top">
 					<form action="/login" method="post">
 						<p class="index-description text-secondary text-center">登入</p>
+						<?php if (isset($_SESSION['login_error'])) { ?>
+							<div class="alert alert-danger">
+								帳號或密碼錯誤！
+							</div>
+						<?php } ?>
 						<div class="mb-3">
 							<label for="account" class="form-label">帳號</label>
-							<input type="text" class="form-control" id="account" name="account" placeholder="請輸入帳號">
+							<input type="text" class="form-control" id="account" name="account" placeholder="請輸入帳號" required>
 						</div>
 						<div class="mb-3">
 							<label for="password" class="form-label">密碼</label>
-							<input type="password" class="form-control" id="password" name="password" placeholder="請輸入密碼">
+							<input type="password" class="form-control" id="password" name="password" placeholder="請輸入密碼" required>
 						</div>
 						<?php /*
 						<div class="mb-3 form-check">
@@ -41,4 +46,7 @@ use view\view;
 			</div>
 		</div>
 	</div>
-<?php view::view('footer'); ?>
+<?php
+view::view('footer');
+unset($_SESSION['login_error']);
+?>
