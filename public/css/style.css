@@ -1,0 +1,124 @@
+.bg-green-1 {
+	background: #74CFAE;
+}
+
+.bg-green-2 {
+	background: #5ABC98;
+}
+
+.bg-green-3 {
+	background: #3EA982;
+}
+
+.bg-green-4 {
+	background: #1D9267;
+}
+
+.bg-green-5 {
+	background: #066B46;
+}
+
+.text-green-1 {
+	color: #74CFAE;
+}
+
+.text-green-2 {
+	color: #5ABC98;
+}
+
+.text-green-3 {
+	color: #3EA982;
+}
+
+.text-green-4 {
+	color: #1D9267;
+}
+
+.text-green-5 {
+	color: #066B46;
+}
+
+body {
+	background: #f2f2f2;
+}
+
+.btn-green {
+	color: #fff;
+	background-color: #74CFAE;
+}
+
+.btn-green:hover {
+	color: #fff;
+	background-color: #5ABC98;
+}
+
+.ml-auto .dropdown-menu {
+	left: auto !important;
+	right: 0px;
+}
+
+@media (min-width: 992px) {
+	.navbar-expand-lg .navbar-nav .nav-link {
+		padding-right: 1rem;
+		padding-left: 1rem;
+		font-size: 1.2rem;
+	}
+}
+
+.index-title {
+	font-weight: bolder;
+	font-size: 6rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.index-danger {
+	font-size: 2rem;
+}
+
+.index-description {
+	font-size: 2rem;
+}
+
+.index-start-btn {
+	margin: 1rem;
+	padding: 1rem 3rem;
+	font-size: 1.5rem;
+	border-radius: 0;
+}
+
+.index-area-top {
+	margin-top: 6rem;
+	margin-bottom: 10rem;
+}
+
+.index-area-center-text {
+	margin-top: 8rem;
+	margin-bottom: 2rem;
+}
+
+.index-area-bottom {
+	font-size: 1.4rem;
+	margin-top: 6rem;
+	margin-bottom: 10rem;
+}
+
+.index-area-bottom .h1 {
+	margin-bottom: 2rem;
+}
+
+.index-phone {
+	margin: 0;
+	vertical-align: bottom;
+	border: 0;
+}
+
+.navbar-header {
+	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+	color: rgb(0 0 0);
+}
