@@ -3,8 +3,8 @@
 use view\view;
 
 ?>
-<?php view::other('header'); ?>
-<?php view::other('navbar'); ?>
+<?php view::view('header'); ?>
+<?php view::view('navbar'); ?>
 	<div class="text-center index-area-top">
 		<h1 class="index-title text-green-1">Hungry Cat</h1>
 		<p class="index-description text-secondary">送餐互助服務 買到熱餐點 也找回人與人之間的溫度</p>
@@ -32,13 +32,18 @@ use view\view;
 			</div>
 		</div>
 	</div>
-	<div class="index-area-bottom">
+	<div class="index-area-about">
 		<div class="container">
 			<p class="text-center h1">About</p>
 			<p>身為大學生，應該都有過「不想上課地點與學餐兩邊跑」或「不想出去宿舍吃飯」的經驗，此平台乃是解決此問題的最佳之道，僅需支付些許的外送費，即可訂購校內餐點，由外送人員幫您外帶餐點，並送交至您指定的地點。</p>
 			<p>因此，開發了這個「貓貓餓了」，希望想訂餐的同學能夠以單筆10~15元便宜的價格當外送員以及工程師的薪水，讓原本目的地就是你那棟樓的人順便幫你外帶。</p>
-			<p>⊙⊙⊙未來也會努力與校外商家洽談外送相關服務⊙⊙⊙</p>
+			<p>⊙⊙⊙ 未來也會努力與校外商家洽談外送相關服務 ⊙⊙⊙</p>
 			<p>「貓貓餓了」以貓為主題，發想是暨大科三館114實驗室的兩隻貓—薛丁格和巴卡，常常去摸摸到變貓派了XD</p>
 		</div>
 	</div>
-<?php view::other('footer'); ?>
+	<div class="bg-dark text-white">
+		<div class="index-area-bottom">
+			Copyright © 2021 貓貓餓了 Hungry Cat. All rights reserved.
+		</div>
+	</div>
+<?php view::view('footer'); ?>

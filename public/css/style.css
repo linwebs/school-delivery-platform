@@ -77,13 +77,20 @@ body {
 }
 
 .index-description {
-	font-size: 2rem;
+	font-size: 1.8rem;
 }
 
 .index-start-btn {
 	margin: 1rem;
 	padding: 1rem 3rem;
 	font-size: 1.5rem;
+	border-radius: 0;
+}
+
+.login-btn {
+	margin: 1rem;
+	padding: 0.6rem 2rem;
+	font-size: 1.3rem;
 	border-radius: 0;
 }
 
@@ -97,14 +104,20 @@ body {
 	margin-bottom: 2rem;
 }
 
-.index-area-bottom {
-	font-size: 1.4rem;
+.index-area-about {
+	font-size: 1.3rem;
 	margin-top: 6rem;
 	margin-bottom: 10rem;
 }
 
-.index-area-bottom .h1 {
+.index-area-about .h1 {
 	margin-bottom: 2rem;
+}
+
+.index-area-bottom {
+	text-align: right;
+	font-size: 1rem;
+	padding: 1rem;
 }
 
 .index-phone {

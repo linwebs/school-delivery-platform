@@ -3,8 +3,8 @@
 use view\view;
 
 ?>
-<?php view::other('header'); ?>
-<?php view::other('navbar'); ?>
+<?php view::view('header'); ?>
+<?php view::view('navbar'); ?>
 	<div class="text-center index-area-top">
 		<h1 class="index-title text-green-1">Hungry Cat</h1>
 		<p class="index-description text-secondary">404 錯誤 - 頁面找不到</p>
@@ -19,4 +19,4 @@ use view\view;
 			馬上點餐
 		</a>
 	</div>
-<?php view::other('footer'); ?>
+<?php view::view('footer'); ?>
