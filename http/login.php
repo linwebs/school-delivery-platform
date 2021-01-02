@@ -1,6 +1,7 @@
 <?php
 
 use database\user;
+use lang\lang;
 
 require_once FOLDER_PATH . 'database/user.php';
 
@@ -29,7 +30,7 @@ class login {
 				return true;
 			} else {
 				// verify db failed
-				$_SESSION['login_error'] = true;
+				$_SESSION['login_error'] = lang::lang('account_password_error');
 				return false;
 			}
 		} else {

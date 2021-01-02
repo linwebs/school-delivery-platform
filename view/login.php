@@ -16,7 +16,7 @@ view::view('navbar');
 						<p class="index-description text-secondary text-center">登入</p>
 						<?php if (isset($_SESSION['login_error'])) { ?>
 							<div class="alert alert-danger">
-								帳號或密碼錯誤！
+								<?= $_SESSION['login_error'] ?>
 							</div>
 						<?php } ?>
 						<div class="mb-3">
@@ -48,5 +48,5 @@ view::view('navbar');
 	</div>
 <?php
 view::view('footer');
+
 unset($_SESSION['login_error']);
-?>

@@ -7,6 +7,7 @@ route::get('/', 'welcome');
 route::get('/login', 'login');
 route::post('/login', 'login');
 route::get('/register', 'register');
+route::post('/register', 'register');
 route::geth('/logout', 'logout');
 
 // show 404 error

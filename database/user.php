@@ -41,4 +41,38 @@ class user {
 			die('DB INSERT Error: ' . $exception);
 		}
 	}
+
+	public static function account_exist($account): bool {
+		$sql = 'SELECT `id` FROM `user` WHERE `account` = :account';
+		try {
+			$conn = connect::connect();
+			$stmt = $conn->prepare($sql);
+			$stmt->bindValue(':account', $account, PDO::PARAM_STR);
+			$stmt->execute();
+			if ($stmt->fetch(PDO::FETCH_ASSOC)) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (PDOException $exception) {
+			die('DB SELECT Error: ' . $exception);
+		}
+	}
+
+	public static function email_exist($email): bool {
+		$sql = 'SELECT `id` FROM `user` WHERE `email` = :email';
+		try {
+			$conn = connect::connect();
+			$stmt = $conn->prepare($sql);
+			$stmt->bindValue(':email', $email, PDO::PARAM_STR);
+			$stmt->execute();
+			if ($stmt->fetch(PDO::FETCH_ASSOC)) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (PDOException $exception) {
+			die('DB SELECT Error: ' . $exception);
+		}
+	}
 }

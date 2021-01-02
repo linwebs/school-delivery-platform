@@ -7,7 +7,7 @@ use PDOException;
 
 class connect {
 	public static function connect(): PDO {
-		$db = require_once FOLDER_PATH . 'config/database.php';
+		$db = require FOLDER_PATH . 'config/database.php';
 		$db_name = $db['name'];
 		$db_username = $db['username'];
 		$db_password = $db['password'];

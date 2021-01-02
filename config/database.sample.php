@@ -1,8 +1,4 @@
 <?php
-/*
- * Use:
- * $db = require_once FOLDER_PATH . 'config/database.php';
- */
 
 return [
 	'name' => 'delivery_platform',
