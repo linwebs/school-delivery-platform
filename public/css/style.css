@@ -52,6 +52,21 @@ body {
 	background-color: #5ABC98;
 }
 
+.btn-dark-green {
+	color: #fff;
+	background-color: #3EA982;
+}
+
+.btn-dark-green:hover {
+	color: #fff;
+	background-color: #1D9267;
+}
+
+.table-green {
+	background-color: #e3fff2;
+	border: #1D9267;
+}
+
 .ml-auto .dropdown-menu {
 	left: auto !important;
 	right: 0px;
@@ -91,6 +106,10 @@ body {
 	margin: 1rem;
 	padding: 0.6rem 2rem;
 	font-size: 1.3rem;
+	border-radius: 0;
+}
+
+.btn-no-radius {
 	border-radius: 0;
 }
 
@@ -144,4 +163,13 @@ body {
 
 .navbar-logo {
 	max-height: 50px;
+}
+
+.text-deco-none {
+	text-decoration: none!important;
+}
+
+.basic-area {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }

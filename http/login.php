@@ -6,13 +6,33 @@ use lang\lang;
 require_once FOLDER_PATH . 'database/user.php';
 
 class login {
+	/* 6~20 word and a-z A-Z 0-9 _ - */
 	private $account;
+	/* at least 6 word */
 	private $password;
+	/* 1 => customer, 2 => delivery, 3 => shop */
+	private $type;
 
 	public function __construct() {
 		// login from post
 		if($this->login_from_post()) {
-			header('Location: /ticket');
+			switch ($this->type) {
+				case 1:
+					// customer
+					header('Location: /ticket');
+					break;
+				case 2:
+					// delivery
+					header('Location: /home');
+					break;
+				case 3:
+					// shop
+					header('Location: /order');
+					break;
+				default:
+					// error
+					header('Location: /404');
+			}
 		} else {
 			header('Location: /login');
 		}
@@ -23,6 +43,7 @@ class login {
 			unset($_SESSION['login_error']);
 			$verify = $this->verify_from_db();
 			if ($verify) {
+				$this->type = $verify['type'];
 				$_SESSION['id'] = $verify['id'];
 				$_SESSION['account'] = $verify['account'];
 				$_SESSION['name'] = $verify['name'];
@@ -65,5 +86,3 @@ class login {
 		return user::verify($this->account, $this->password);
 	}
 }
-
-new login();

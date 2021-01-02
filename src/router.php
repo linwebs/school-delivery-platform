@@ -18,6 +18,20 @@ class router {
 		return $data;
 	}
 
+	public static function locale_sub($url) {
+		$request      = substr($_SERVER['REQUEST_URI'], strlen($url));
+		$original_uri = explode('?', $request, 2);
+		$locale       = explode('/', $original_uri[0]);
+		$data         = array();
+		foreach($locale as $item) {
+			if(!empty($item)) {
+				$items = urldecode($item);
+				array_push($data, $items);
+			}
+		}
+		return $data[0];
+	}
+
 	// 已陣列方式傳回網址 GET 請求內容
 	public static function data() {
 		$request      = $_SERVER['REQUEST_URI'];

@@ -19,7 +19,7 @@ use view\view;
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-sm-12 col-lg-4">
-					<img src="/img/phone.png" class="index-phone img-fluid" />
+					<img src="/img/main/phone.png" class="index-phone img-fluid" />
 				</div>
 				<div class="col-sm-12 col-lg-8">
 					<div class="index-area-center-text">

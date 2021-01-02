@@ -15,6 +15,9 @@ switch ($local) {
 	case 'api':
 		require_once FOLDER_PATH . 'routes/api.php';
 		break;
+	case 'img':
+		require_once FOLDER_PATH . 'routes/img.php';
+		break;
 	default:
 		require_once FOLDER_PATH . 'routes/web.php';
 }

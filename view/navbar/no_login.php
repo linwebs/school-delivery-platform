@@ -1,7 +1,7 @@
 <nav class="navbar navbar-header sticky-top navbar-expand-lg navbar-light bg-white">
 	<div class="container">
 		<a class="navbar-brand" href="#">
-			<img src="/img/hungrycat_logo.png" alt="<?= APP_NAME ?>" class="d-inline-block align-top navbar-logo">
+			<img src="/img/main/hungrycat_logo.png" alt="<?= APP_NAME ?>" class="d-inline-block align-top navbar-logo">
 		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
