@@ -12,8 +12,8 @@ class navbar {
 	}
 
 	private function check_login() {
-		if (isset($_SESSION['id'])) {
-			if (is_numeric($_SESSION['id'])) {
+		if (isset($_SESSION['user']['id'])) {
+			if (is_numeric($_SESSION['user']['id'])) {
 				$this->login = true;
 			}
 		}

@@ -1,2 +1,5 @@
-*
+img/area/*
+img/main/*
+img/meal/*
+img/shop/*
 !.gitignore

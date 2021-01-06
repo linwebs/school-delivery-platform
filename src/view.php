@@ -25,8 +25,22 @@ class view {
 			header('Content-Disposition: inline; filename="' . $file_name . '"');
 			header('Content-Type:' . $type);
 			header('Content-Length: ' . filesize($file_path));
-			readfile($file_path);
-			return true;
+			return file_get_contents($file_path);
+		} else {
+			return false;
+		}
+	}
+
+	public static function img_png($path, $file) {
+		$file_path = FOLDER_PATH . 'storage/img/' . $path . '/' . $file . '.png';
+		$file_name = $file;
+		$type = 'image/png';
+
+		if (file_exists($file_path)) {
+			header('Content-Disposition: inline; filename="' . $file_name . '"');
+			header('Content-Type:' . $type);
+			header('Content-Length: ' . filesize($file_path));
+			return file_get_contents($file_path);
 		} else {
 			return false;
 		}

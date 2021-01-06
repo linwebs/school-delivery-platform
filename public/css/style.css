@@ -69,7 +69,7 @@ body {
 
 .ml-auto .dropdown-menu {
 	left: auto !important;
-	right: 0px;
+	right: 0;
 }
 
 @media (min-width: 992px) {
@@ -78,6 +78,20 @@ body {
 		padding-left: 1rem;
 		font-size: 1.2rem;
 	}
+
+	.show-shop h3 {
+		padding-top: 2rem;
+		font-size: 2.4rem;
+	}
+
+	.show-shop p {
+		font-size: 1.2rem;
+	}
+
+	.show-shop img {
+		max-height: 160px;
+	}
+
 }
 
 .index-title {
@@ -146,9 +160,9 @@ body {
 }
 
 .navbar-header {
-	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
-	-moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
-	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
@@ -166,10 +180,35 @@ body {
 }
 
 .text-deco-none {
-	text-decoration: none!important;
+	text-decoration: none !important;
 }
 
 .basic-area {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
+}
+
+.shop-img {
+	text-align: right;
+}
+
+
+.show-shop a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.show-shop a:hover {
+	color: #444444;
+}
+
+.show-shop img:hover {
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+}
+
+.show-shop {
+	padding: 1rem 0 1rem 0;
+	border-bottom: 1px solid #999999;
 }

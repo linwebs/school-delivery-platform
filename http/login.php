@@ -44,10 +44,10 @@ class login {
 			$verify = $this->verify_from_db();
 			if ($verify) {
 				$this->type = $verify['type'];
-				$_SESSION['id'] = $verify['id'];
-				$_SESSION['account'] = $verify['account'];
-				$_SESSION['name'] = $verify['name'];
-				$_SESSION['type'] = $verify['type'];
+				$_SESSION['user']['id'] = $verify['id'];
+				$_SESSION['user']['account'] = $verify['account'];
+				$_SESSION['user']['name'] = $verify['name'];
+				$_SESSION['user']['type'] = $verify['type'];
 				return true;
 			} else {
 				// verify db failed

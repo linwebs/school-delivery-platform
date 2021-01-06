@@ -11,8 +11,11 @@ class img {
 	public function __construct() {
 		$this->level1 = '';
 		$this->level2 = '';
-		if(!$this->get_locale()) {
+		$img = $this->get_locale();
+		if(!$img) {
 			view::view('error_404');
+		} else {
+			echo $img;
 		}
 	}
 
@@ -23,6 +26,8 @@ class img {
 		switch (router::locale()[1]) {
 			case 'area':
 				return $this->get_area();
+			case 'shop':
+				return $this->get_shop();
 			case 'main':
 				return $this->get_main();
 			default:
@@ -42,6 +47,17 @@ class img {
 			return false;
 		}
 		return view::img_jpg('area', router::locale()[2]);
+	}
+
+	private function get_shop() {
+		if (!isset(router::locale()[2])) {
+			return false;
+		}
+		if(view::img_jpg('shop', router::locale()[2])) {
+			return view::img_jpg('shop', router::locale()[2]);
+		} else {
+			return view::img_png('shop', 'noshop');
+		}
 	}
 }
 

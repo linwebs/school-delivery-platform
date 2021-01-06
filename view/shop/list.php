@@ -7,9 +7,45 @@ use view\view;
 view::view('header');
 view::view('navbar');
 
-$_SESSION['locale_area']
+// $_SESSION['place']['area']
+// $_SESSION['place']['build']
+// $_SESSION['place']['room']
+
 ?>
-	<h1>shop</h1>
+	<div class="container basic-area">
+		<h4>送餐地點:
+			<small><?= $data['area'] ?> <?= $data['build'] ?> <?= $_SESSION['place']['room'] ?> <a href="/place" class="btn btn-dark-green btn-no-radius btn-sm">選擇其他地點</a></small>
+		</h4>
+		<!--div class="row">
+			<div class="col-md-12 col-lg-6">
+				<h4>送餐地點: <small><?= $data['area'] ?> <?= $data['build'] ?> <?= $_SESSION['place']['room'] ?></small>
+				</h4>
+			</div>
+			<form class="col-md-12 col-lg-6 food-search-form">
+				<div class="row g-5">
+					<div class="col-8">
+						<input type="text" class="form-control" id="" placeholder="想吃點什麼?">
+					</div>
+					<div class="col">
+						<button type="submit" class="btn btn-primary">尋找美食</button>
+					</div>
+				</div>
+			</form>
+		</div-->
+		<?php foreach ($data['shop'] as $item) { ?>
+			<div class="row show-shop">
+				<div class="col-sm-12 col-md-4 shop-img">
+					<a href="/shop/<?= $item['id'] ?>"><img src="/img/shop/<?= $item['id'] ?>" class="img-fluid rounded" alt="shop"></a>
+				</div>
+				<div class="col-sm-12 col-md-8">
+					<a href="/shop/<?= $item['id'] ?>">
+						<h3><?= $item['name'] ?></h3>
+						<p class="d-none d-sm-none d-md-block"><?= $item['intro'] ?></p>
+					</a>
+				</div>
+			</div>
+		<?php } ?>
+	</div>
 <?php
 view::view('footer');
 

@@ -45,10 +45,10 @@ class register {
 	}
 
 	private function success_register($user_id) {
-		$_SESSION['id'] = $user_id;
-		$_SESSION['account'] = $this->account;
-		$_SESSION['name'] = $this->name;
-		$_SESSION['type'] = $this->type;
+		$_SESSION['user']['id'] = $user_id;
+		$_SESSION['user']['account'] = $this->account;
+		$_SESSION['user']['name'] = $this->name;
+		$_SESSION['user']['type'] = $this->type;
 		header('Location: /ticket');
 	}
 
