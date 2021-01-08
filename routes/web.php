@@ -15,6 +15,9 @@ route::gethp('/place/my', 'place_my');
 route::gethp('/place/add', 'place_add');
 route::postp('/place/add', 'place_add_finish');
 route::geth('/shop', 'shop_list');
+route::getpn('/shop', 'shop_meal', array('checkout'));
+route::geth('/shop/checkout', 'shop_checkout');
+route::getp('/meal', 'meal_add');
 
 // invalid
 route::get('/error_403', 'error_403');

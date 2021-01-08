@@ -28,6 +28,8 @@ class img {
 				return $this->get_area();
 			case 'shop':
 				return $this->get_shop();
+			case 'meal':
+				return $this->get_meal();
 			case 'main':
 				return $this->get_main();
 			default:
@@ -57,6 +59,17 @@ class img {
 			return view::img_jpg('shop', router::locale()[2]);
 		} else {
 			return view::img_png('shop', 'noshop');
+		}
+	}
+
+	private function get_meal() {
+		if (!isset(router::locale()[2])) {
+			return false;
+		}
+		if(view::img_jpg('meal', router::locale()[2])) {
+			return view::img_jpg('meal', router::locale()[2]);
+		} else {
+			return view::img_png('meal', 'nomeal');
 		}
 	}
 }

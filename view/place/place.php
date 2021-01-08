@@ -30,7 +30,7 @@ view::view('navbar');
 						<td>402教室</td>
 						<td></td>
 						<td>
-							<a href="/place/my/1" class="btn btn-dark-green btn-no-radius"><i class="fas fa-caret-right"></i>
+							<a href="/place/my/1" class="btn btn-dark-green no-radius"><i class="fas fa-caret-right"></i>
 								選擇</a>
 						</td>
 					</tr>
@@ -41,7 +41,7 @@ view::view('navbar');
 						<td>5舍門口</td>
 						<td></td>
 						<td>
-							<a href="/place/my/2" class="btn btn-dark-green btn-no-radius"><i class="fas fa-caret-right"></i>
+							<a href="/place/my/2" class="btn btn-dark-green no-radius"><i class="fas fa-caret-right"></i>
 								選擇</a>
 						</td>
 					</tr>

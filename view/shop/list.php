@@ -14,9 +14,10 @@ view::view('navbar');
 ?>
 	<div class="container basic-area">
 		<h4>送餐地點:
-			<small><?= $data['area'] ?> <?= $data['build'] ?> <?= $_SESSION['place']['room'] ?> <a href="/place" class="btn btn-dark-green btn-no-radius btn-sm">選擇其他地點</a></small>
+			<small><?= $data['area'] ?> <?= $data['build'] ?> <?= $_SESSION['place']['room'] ?> <a href="/place" class="btn btn-dark-green no-radius btn-sm">選擇其他地點</a></small>
 		</h4>
-		<!--div class="row">
+		<?php /*
+		<div class="row">
 			<div class="col-md-12 col-lg-6">
 				<h4>送餐地點: <small><?= $data['area'] ?> <?= $data['build'] ?> <?= $_SESSION['place']['room'] ?></small>
 				</h4>
@@ -31,7 +32,8 @@ view::view('navbar');
 					</div>
 				</div>
 			</form>
-		</div-->
+		</div>
+ 		*/ ?>
 		<?php foreach ($data['shop'] as $item) { ?>
 			<div class="row show-shop">
 				<div class="col-sm-12 col-md-4 shop-img">
@@ -39,7 +41,10 @@ view::view('navbar');
 				</div>
 				<div class="col-sm-12 col-md-8">
 					<a href="/shop/<?= $item['id'] ?>">
-						<h3><?= $item['name'] ?></h3>
+						<div class="d-flex w-100 justify-content-between">
+							<h3 class="mb-2"><?= $item['name'] ?></h3>
+							<h5><span class="badge bg-green-4 no-radius">目前點餐店家</span></h5>
+						</div>
 						<p class="d-none d-sm-none d-md-block"><?= $item['intro'] ?></p>
 					</a>
 				</div>

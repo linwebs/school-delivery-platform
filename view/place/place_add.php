@@ -50,13 +50,13 @@ view::view('navbar');
 					</div>
 					<div class="row text-center">
 						<div class="col-6">
-							<a onclick="history.go(-1)" class="btn btn-secondary btn-no-radius mt-4 mb-4">
+							<a onclick="history.go(-1)" class="btn btn-secondary no-radius mt-4 mb-4">
 								<i class="fas fa-angle-left"></i>
 								返回上一頁
 							</a>
 						</div>
 						<div class="col-6">
-							<button type="submit" class="btn btn-dark-green btn-no-radius mt-4 mb-4">
+							<button type="submit" class="btn btn-dark-green no-radius mt-4 mb-4">
 								開始訂餐
 								<i class="fas fa-angle-right"></i>
 							</button>

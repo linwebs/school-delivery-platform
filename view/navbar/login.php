@@ -14,17 +14,17 @@
 					<a class="nav-link" aria-current="page" href="/">首頁</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/car">購物車</a>
+					<a class="nav-link" href="/car">購物車 <span class="badge bg-green-4 no-radius">0</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/ticket">訂單</a>
+					<a class="nav-link" href="/ticket">訂單 <span class="badge bg-green-5 no-radius">1</span></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/shop">店家</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						<?= $_SESSION['name'] ?>
+						<?= $_SESSION['user']['name'] ?>
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<li><a class="dropdown-item" href="/account">帳號資訊</a></li>
