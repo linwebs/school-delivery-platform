@@ -14,10 +14,10 @@
 					<a class="nav-link" aria-current="page" href="/">首頁</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/car">購物車 <span class="badge bg-green-4 no-radius">0</span></a>
+					<a class="nav-link" href="/car">購物車 <span class="badge bg-green-4 no-radius" id="car-count"><?= (isset($_SESSION['car']['total_meal']))?($_SESSION['car']['total_meal']):('0') ?></span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/ticket">訂單 <span class="badge bg-green-5 no-radius">1</span></a>
+					<a class="nav-link" href="/ticket">訂單 <span class="badge bg-green-5 no-radius" id="ticket-count">1</span></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/shop">店家</a>

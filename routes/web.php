@@ -14,11 +14,14 @@ route::geth('/place', 'place');
 route::gethp('/place/my', 'place_my');
 route::gethp('/place/add', 'place_add');
 route::postp('/place/add', 'place_add_finish');
+
 route::geth('/shop', 'shop_list');
 route::getpn('/shop', 'shop_meal', array('checkout'));
-route::geth('/shop/checkout', 'shop_checkout');
 route::getp('/meal', 'meal_detail');
 route::postp('/meal', 'meal_add');
+
+route::geth('/car', 'car');
+route::post('/car', 'car_checkout');
 
 // invalid
 route::get('/error_403', 'error_403');

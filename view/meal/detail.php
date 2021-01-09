@@ -39,6 +39,12 @@ view::view('navbar');
 			<h2><?= $data['shop']['name'] ?></h2>
 			<p><?= $data['shop']['intro'] ?></p>
 		</div>
+		<?php if (isset($_SESSION['meal_alert'])) { ?>
+			<div class="alert alert-warning alert-dismissible fade show no-radius" role="alert">
+				<?= $_SESSION['meal_alert'] ?>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		<?php } ?>
 		<form action="/meal/<?= $data['meal']['id'] ?>" method="post">
 			<div class="row show-shop">
 				<div class="col-md-12 col-lg-4 shop-img">
@@ -51,15 +57,15 @@ view::view('navbar');
 					<div class="mb-2">
 						<label for="quantity" class="form-label">數量:</label>
 						<select class="form-select" id="quantity" name="quantity" required>
-							<option value="" selected>-- 請選擇數量 --</option>
-							<?php for ($i = 1; $i <= 6; $i++) { ?>
-								<option value="<?= $i ?>"><?= $i ?></option>
+							<option value="" <?= ($data['quantity'] == 0) ? ('selected') : ('') ?>>-- 請選擇數量 --</option>
+							<?php for ($i = 1; $i <= ITEM_MAX_BUY; $i++) { ?>
+								<option value="<?= $i ?>" <?= ($data['quantity'] == $i) ? ('selected') : ('') ?>><?= $i ?></option>
 							<?php } ?>
 						</select>
 					</div>
 					<div class="mb-3">
 						<label for="note" class="form-label">備註:</label>
-						<textarea class="form-control" id="note" name="note" rows="3"></textarea>
+						<textarea class="form-control" id="note" name="note" rows="3"><?= $data['note'] ?></textarea>
 					</div>
 					<input type="hidden" name="shop" value="<?= $data['shop']['id'] ?>">
 					<input type="hidden" name="meal" value="<?= $data['meal']['id'] ?>">
@@ -71,10 +77,10 @@ view::view('navbar');
 						<a onclick="history.go(-1)" class="btn btn-secondary no-radius login-btn"><i class="fas fa-caret-left"></i>
 							返回</a>
 					</div>
-					<?php if (!empty($data['meal'])) { ?>
+					<?php if (isset($_SESSION['user']['id']) && !empty($data['meal']) && $data['shop']['status'] == '1' && $data['meal']['status'] == '1') { ?>
 						<div class="col-sm-12 col-md-6">
 							<button type="submit" class="btn btn-dark-green no-radius login-btn">
-								加入購物車 <i class="fas fa-caret-right"></i>
+								<?= ($data['quantity'] == 0) ? ('加入購物車') : ('更新購物車') ?> <i class="fas fa-caret-right"></i>
 							</button>
 						</div>
 					<?php } ?>
@@ -85,4 +91,4 @@ view::view('navbar');
 <?php
 view::view('footer');
 
-unset($_SESSION['login_error']);
+unset($_SESSION['meal_alert']);

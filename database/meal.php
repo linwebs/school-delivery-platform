@@ -9,7 +9,7 @@ require_once FOLDER_PATH . 'database/connect.php';
 
 class meal {
 	public static function shop_all($shop) {
-		$sql = 'SELECT `meal`.`id`, `meal`.`name`, `meal`.`price`, `meal`.`status`, `meal`.`note` FROM `meal` WHERE `meal`.`shop_id` = :shop';
+		$sql = 'SELECT `id`, `name`, `price`, `status`, `note` FROM `meal` WHERE `shop_id` = :shop';
 		try {
 			$conn = connect::connect();
 			$stmt = $conn->prepare($sql);
@@ -22,7 +22,7 @@ class meal {
 	}
 
 	public static function get_single($id) {
-		$sql = 'SELECT `meal`.`id`, `meal`.`name`, `meal`.`price`, `meal`.`status`, `meal`.`note` FROM `meal` WHERE `meal`.`id` = :id';
+		$sql = 'SELECT `id`, `shop_id`, `name`, `price`, `status`, `note` FROM `meal` WHERE `id` = :id';
 		try {
 			$conn = connect::connect();
 			$stmt = $conn->prepare($sql);

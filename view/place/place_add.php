@@ -87,5 +87,3 @@ view::view('navbar');
 	</form>
 <?php
 view::view('footer');
-
-unset($_SESSION['login_error']);

@@ -5,12 +5,8 @@ use router\router;
 use view\view;
 
 class img {
-	private string $level1;
-	private string $level2;
 
 	public function __construct() {
-		$this->level1 = '';
-		$this->level2 = '';
 		$img = $this->get_locale();
 		if(!$img) {
 			view::view('error_404');

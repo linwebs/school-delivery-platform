@@ -244,3 +244,25 @@ body {
 .navbar-toggler:focus {
 	box-shadow: inset 0px 0px 20px -10px rgba(0, 0, 0, 0.75);
 }
+
+.btn-outline-dark-green {
+	color: #066b46;
+	border-color: #066B46;
+	border-radius: 0;
+}
+
+.btn-outline-dark-green:hover {
+	color: #fff;
+	background-color: #3EA982;
+	border: 1px solid #066B46;
+}
+
+.btn-outline-dark-green:focus {
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.btn-outline-dark-green:active {
+	color: #fff;
+	background-color: #1D9267;
+	border: 1px solid #066B46;
+}

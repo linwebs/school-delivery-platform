@@ -13,6 +13,7 @@ class shop_list {
 	public function __construct() {
 		if(empty($_SESSION['place']['selected'])) {
 			header('Location: /place');
+			die();
 		}
 
 		view::func('shop/list', function () {

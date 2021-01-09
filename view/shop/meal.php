@@ -1,24 +1,9 @@
 <?php
 
-//print_r($data);
-
 use view\view;
 
 view::view('header');
 view::view('navbar');
-
-// $_SESSION['place']['area']
-// $_SESSION['place']['build']
-// $_SESSION['place']['room']
-
-if (empty($data['shop']['name'])) {
-	header('Location: /shop');
-}
-if ($_SESSION['place']['area'] != $data['shop']['area_id']) {
-	// shop not in this area
-	header('Location: /shop');
-}
-
 ?>
 	<div class="container basic-area">
 		<h4>送餐地點:
@@ -47,7 +32,14 @@ if ($_SESSION['place']['area'] != $data['shop']['area_id']) {
 			<h2><?= $data['shop']['name'] ?> <?= ($data['shop']['status'] == '1') ? ('') : ('<span class="badge bg-danger no-radius">目前未營業</span>') ?></h2>
 			<p><?= $data['shop']['intro'] ?></p>
 		</div>
-		<?php
+		<?php if (isset($_SESSION['shop_alert'])) { ?>
+			<div class="alert alert-warning alert-dismissible fade show no-radius" role="alert">
+				<?= $_SESSION['shop_alert'] ?>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<?php
+		}
+
 		if (empty($data['meal'])) {
 			?>
 			<h3 class="text-center">目前尚無任何餐點</h3>
@@ -57,24 +49,29 @@ if ($_SESSION['place']['area'] != $data['shop']['area_id']) {
 				?>
 				<div class="row show-shop">
 					<div class="col-sm-12 col-md-4 shop-img">
-						<?= ($data['shop']['status'] == '1' && $item['status'] == '1') ? ('<a href="/meal/' . $item['id'] . '">') : ('') ?>
+						<?= (isset($_SESSION['user']['id']) && $data['shop']['status'] == '1' && $item['status'] == '1') ? ('<a href="/meal/' . $item['id'] . '">') : ('') ?>
 						<img src="/img/meal/<?= $item['id'] ?>" class="img-fluid rounded" alt="shop">
 						<?php if ($item['status'] != '1') { ?>
 							<div class="img-inner-text">
 								<span class="bg-danger">目前未提供此餐點</span>
 							</div>
 						<?php } ?>
-						<?= ($data['shop']['status'] == '1') ? ('</a>') : ('') ?>
+						<?= (isset($_SESSION['user']['id']) && $data['shop']['status'] == '1' && $item['status'] == '1') ? ('</a>') : ('') ?>
 					</div>
 					<div class="col-sm-12 col-md-8">
-						<?= ($data['shop']['status'] == '1' && $item['status'] == '1') ? ('<a href="/meal/' . $item['id'] . '">') : ('') ?>
+						<?= (isset($_SESSION['user']['id']) && $data['shop']['status'] == '1' && $item['status'] == '1') ? ('<a href="/meal/' . $item['id'] . '">') : ('') ?>
 						<div class="d-flex w-100 justify-content-between">
-							<h3 class="mb-2"><?= $item['name'] ?></h3>
-							<h5><span class="badge bg-green-4 no-radius">1</span></h5>
+							<h3 class="mb-2">
+								<?= $item['name'] ?>
+								<?php if ($item['status'] != '1') { ?>
+									<small class="h4">目前未提供此餐點</small>
+								<?php } ?>
+							</h3>
+							<h5><span class="badge bg-green-4 no-radius"><?= ($item['quantity'] == 0)?(''):($item['quantity']) ?></span></h5>
 						</div>
 						<p class="mb-0">價錢: <?= $item['price'] ?>元</p>
 						<p class="d-none d-sm-none d-md-block">備註: <?= $item['note'] ?></p>
-						<?= ($data['shop']['status'] == '1') ? ('</a>') : ('') ?>
+						<?= (isset($_SESSION['user']['id']) && $data['shop']['status'] == '1' && $item['status'] == '1') ? ('</a>') : ('') ?>
 					</div>
 				</div>
 				<?php
@@ -89,7 +86,7 @@ if ($_SESSION['place']['area'] != $data['shop']['area_id']) {
 				</div>
 				<?php if (!empty($data['meal']) && $data['shop']['status'] == '1') { ?>
 					<div class="col-sm-12 col-md-6">
-						<a href="/shop/checkout" class="btn btn-dark-green no-radius login-btn">
+						<a href="/car" class="btn btn-dark-green no-radius login-btn">
 							結帳 <i class="fas fa-caret-right"></i>
 						</a>
 					</div>
@@ -100,4 +97,4 @@ if ($_SESSION['place']['area'] != $data['shop']['area_id']) {
 <?php
 view::view('footer');
 
-unset($_SESSION['login_error']);
+unset($_SESSION['shop_alert']);

@@ -6,11 +6,6 @@ use view\view;
 
 view::view('header');
 view::view('navbar');
-
-// $_SESSION['place']['area']
-// $_SESSION['place']['build']
-// $_SESSION['place']['room']
-
 ?>
 	<div class="container basic-area">
 		<h4>送餐地點:
@@ -45,7 +40,15 @@ view::view('navbar');
 						<a href="/shop/<?= $item['id'] ?>">
 							<div class="d-flex w-100 justify-content-between">
 								<h3 class="mb-2"><?= $item['name'] ?></h3>
-								<h5><span class="badge bg-green-4 no-radius">目前點餐店家</span></h5>
+								<?php
+								if (isset($_SESSION['car']['shop'])) {
+									if ($item['id'] == $_SESSION['car']['shop']) {
+										?>
+										<h5><span class="badge bg-green-4 no-radius">目前點餐店家</span></h5>
+										<?php
+									}
+								}
+								?>
 							</div>
 							<p class="d-none d-sm-none d-md-block"><?= $item['intro'] ?></p>
 						</a>
@@ -62,8 +65,16 @@ view::view('navbar');
 					<div class="col-sm-12 col-md-8">
 						<a href="/shop/<?= $item['id'] ?>">
 							<div class="d-flex w-100 justify-content-between">
-								<h3 class="mb-2"><?= $item['name'] ?> <small>目前未營業</small></h3>
-								<h5><span class="badge bg-green-4 no-radius">目前點餐店家</span></h5>
+								<h3 class="mb-2"><?= $item['name'] ?> <small class="h4">目前未營業</small></h3>
+								<?php
+								if (isset($_SESSION['car']['shop'])) {
+									if ($item['id'] == $_SESSION['car']['shop']) {
+										?>
+										<h5><span class="badge bg-green-4 no-radius">目前點餐店家</span></h5>
+										<?php
+									}
+								}
+								?>
 							</div>
 							<p class="d-none d-sm-none d-md-block"><?= $item['intro'] ?></p>
 						</a>
@@ -74,5 +85,3 @@ view::view('navbar');
 	</div>
 <?php
 view::view('footer');
-
-unset($_SESSION['login_error']);
