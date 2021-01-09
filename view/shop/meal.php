@@ -11,6 +11,14 @@ view::view('navbar');
 // $_SESSION['place']['build']
 // $_SESSION['place']['room']
 
+if (empty($data['shop']['name'])) {
+	header('Location: /shop');
+}
+if ($_SESSION['place']['area'] != $data['shop']['area_id']) {
+	// shop not in this area
+	header('Location: /shop');
+}
+
 ?>
 	<div class="container basic-area">
 		<h4>送餐地點:
@@ -36,7 +44,7 @@ view::view('navbar');
 		</div>
  		*/ ?>
 		<div class="basic-area">
-			<h2><?= $data['shop']['name'] ?></h2>
+			<h2><?= $data['shop']['name'] ?> <?= ($data['shop']['status'] == '1') ? ('') : ('<span class="badge bg-danger no-radius">目前未營業</span>') ?></h2>
 			<p><?= $data['shop']['intro'] ?></p>
 		</div>
 		<?php
@@ -45,22 +53,28 @@ view::view('navbar');
 			<h3 class="text-center">目前尚無任何餐點</h3>
 			<?php
 		} else {
-
 			foreach ($data['meal'] as $item) {
 				?>
 				<div class="row show-shop">
 					<div class="col-sm-12 col-md-4 shop-img">
-						<a href="/meal/<?= $item['id'] ?>"><img src="/img/meal/<?= $item['id'] ?>" class="img-fluid rounded" alt="shop"></a>
+						<?= ($data['shop']['status'] == '1' && $item['status'] == '1') ? ('<a href="/meal/' . $item['id'] . '">') : ('') ?>
+						<img src="/img/meal/<?= $item['id'] ?>" class="img-fluid rounded" alt="shop">
+						<?php if ($item['status'] != '1') { ?>
+							<div class="img-inner-text">
+								<span class="bg-danger">目前未提供此餐點</span>
+							</div>
+						<?php } ?>
+						<?= ($data['shop']['status'] == '1') ? ('</a>') : ('') ?>
 					</div>
 					<div class="col-sm-12 col-md-8">
-						<a href="/meal/<?= $item['id'] ?>">
-							<div class="d-flex w-100 justify-content-between">
-								<h3 class="mb-2"><?= $item['name'] ?></h3>
-								<h5><span class="badge bg-green-4 no-radius">1</span></h5>
-							</div>
-							<p class="mb-0">價錢: <?= $item['price'] ?>元</p>
-							<p class="d-none d-sm-none d-md-block">備註: <?= $item['note'] ?></p>
-						</a>
+						<?= ($data['shop']['status'] == '1' && $item['status'] == '1') ? ('<a href="/meal/' . $item['id'] . '">') : ('') ?>
+						<div class="d-flex w-100 justify-content-between">
+							<h3 class="mb-2"><?= $item['name'] ?></h3>
+							<h5><span class="badge bg-green-4 no-radius">1</span></h5>
+						</div>
+						<p class="mb-0">價錢: <?= $item['price'] ?>元</p>
+						<p class="d-none d-sm-none d-md-block">備註: <?= $item['note'] ?></p>
+						<?= ($data['shop']['status'] == '1') ? ('</a>') : ('') ?>
 					</div>
 				</div>
 				<?php
@@ -73,7 +87,7 @@ view::view('navbar');
 					<a onclick="history.go(-1)" class="btn btn-secondary no-radius login-btn"><i class="fas fa-caret-left"></i>
 						返回</a>
 				</div>
-				<?php if (!empty($data['meal'])) { ?>
+				<?php if (!empty($data['meal']) && $data['shop']['status'] == '1') { ?>
 					<div class="col-sm-12 col-md-6">
 						<a href="/shop/checkout" class="btn btn-dark-green no-radius login-btn">
 							結帳 <i class="fas fa-caret-right"></i>
