@@ -22,6 +22,7 @@ route::postp('/meal', 'meal_add');
 
 route::geth('/car', 'car');
 route::post('/car', 'car_checkout');
+route::geth('/car/error', 'car_error');
 
 // invalid
 route::get('/error_403', 'error_403');

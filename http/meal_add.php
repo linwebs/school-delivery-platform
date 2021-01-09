@@ -1,8 +1,5 @@
 <?php
 
-
-use database\area;
-use database\build;
 use database\meal;
 use database\shop;
 

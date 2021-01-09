@@ -10,8 +10,11 @@ require_once FOLDER_PATH . 'database/room.php';
 
 class place_add {
 	public function __construct($param) {
-		view::arr('place/place_add', ['area' => $param, 'build' => build::area_all($param),
-			'room' => $this->room_format($param)]);
+		view::arr('place/place_add', [
+			'area' => $param,
+			'build' => build::area_all($param),
+			'room' => $this->room_format($param)
+		]);
 	}
 
 	private function room_format($param) {

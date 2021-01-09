@@ -14,7 +14,7 @@ class place {
 		unset($_SESSION['place']['room']);
 
 		if(isset($_SESSION['user']['id'])) {
-			$my = database\place::get_user_all($_SESSION['user']['id']);
+			$my = \database\place::get_user_all($_SESSION['user']['id']);
 		} else {
 			$my = array();
 		}

@@ -59,7 +59,7 @@ view::view('navbar');
 					<div class="mb-3 row">
 						<label for="place-name" class="col-sm-2 col-form-label">地點名稱: </label>
 						<div class="col-sm-10">
-							<input type="text" name="place_name" id="place-name" class="form-control" aria-describedby="place-name-hint" value="<?= $data['place']['name'] ?>" maxlength="30">
+							<input type="text" name="place_name" id="place-name" class="form-control" aria-describedby="place-name-hint" value="<?= $data['place']['name'] ?>" maxlength="30" required>
 							<div id="place-name-hint" class="form-text">可在此處填寫地點名稱，方便下次訂餐使用 (最多30字)</div>
 						</div>
 					</div>
@@ -76,8 +76,8 @@ view::view('navbar');
 					<div class="mb-3 row">
 						<label for="order-detail" class="col-sm-2 col-form-label">訂單備註: </label>
 						<div class="col-sm-10">
-							<textarea name="order_detail" id="place-detail" cols="30" rows="2" class="form-control" aria-describedby="order-hint"></textarea>
-							<div id="order-hint" class="form-text">在此處填寫給店家的訂單備註</div>
+							<textarea name="order_detail" id="place-detail" cols="30" rows="2" class="form-control" aria-describedby="order-hint"><?= $data['ticket_note'] ?></textarea>
+							<div id="order-hint" class="form-text">在此處填寫給店家的訂單備註 (為響應環保，若不須附贈餐具，請在此處填寫)</div>
 						</div>
 					</div>
 					<p class="mb-1 h5">總計: <span id="price-meals"><?= $data['price-meals'] ?></span>元</p>
@@ -98,7 +98,7 @@ view::view('navbar');
 						</div>
 					</div>
 					<div class="modal fade" id="submit-order-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
-						<div class="modal-dialog">
+						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h5 class="modal-title" id="modal-title">送出訂單</h5>
@@ -200,3 +200,6 @@ view::view('navbar');
 view::view('footer');
 
 unset($_SESSION['car_alert']);
+unset($_SESSION['car_last']['place_name']);
+unset($_SESSION['car_last']['place_detail']);
+unset($_SESSION['car_last']['ticket_note']);

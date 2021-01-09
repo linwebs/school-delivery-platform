@@ -49,7 +49,7 @@ class car {
 		$shop = shop::get_single($car['shop']);
 
 		$price_meals = 0;
-		if(isset($_SESSION['car']['meal'])) {
+		if (isset($_SESSION['car']['meal'])) {
 			foreach ($_SESSION['car']['meal'] as $item) {
 				$price_meals += $item['quantity'] * (meal::get_single($item['id'])['price']);
 			}
@@ -64,7 +64,14 @@ class car {
 			}
 		}
 
-		if($_SESSION['place']['my'] == false) {
+		if (isset($_SESSION['car_last']['place_name'])) {
+			if (isset($_SESSION['car_last']['place_detail'])) {
+				$place['note'] = $_SESSION['car_last']['place_detail'];
+			} else {
+				$place['note'] = '';
+			}
+			$place['name'] = $_SESSION['car_last']['place_name'];
+		} elseif ($_SESSION['place']['my'] == false) {
 			$place['name'] = '我的新地點';
 			$place['note'] = '';
 		} else {
@@ -73,7 +80,13 @@ class car {
 			$place['note'] = $my_place['user_place_detail'];
 		}
 
-		view::func('car/car', function () use ($place, $shop, $car, $price_meals, $price_total) {
+		if (isset($_SESSION['car_last']['ticket_note'])) {
+			$ticket_note = $_SESSION['car_last']['ticket_note'];
+		} else {
+			$ticket_note = '';
+		}
+
+		view::func('car/car', function () use ($place, $shop, $car, $price_meals, $price_total, $ticket_note) {
 			return [
 				'place' => $place,
 				'area' => area::get_name($_SESSION['place']['area']),
@@ -82,7 +95,8 @@ class car {
 				'car' => $car,
 				'price-meals' => $price_meals,
 				'price-delivery' => DELIVERY_FEE,
-				'price-total' => $price_total
+				'price-total' => $price_total,
+				'ticket_note' => $ticket_note
 			];
 		});
 	}
