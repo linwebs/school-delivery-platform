@@ -1,7 +1,5 @@
 <?php
 
-namespace api;
-
 use database\meal;
 
 require_once FOLDER_PATH . 'database/meal.php';

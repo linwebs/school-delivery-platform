@@ -18,6 +18,11 @@ require_once FOLDER_PATH . 'database/order.php';
 
 class car_checkout {
 	public function __construct() {
+		if(!isset($_SESSION['user']['id'])) {
+			header('Location: /login');
+			die();
+		}
+
 		if (empty($_SESSION['place']['selected'])) {
 			header('Location: /place');
 			die();
@@ -33,6 +38,10 @@ class car_checkout {
 		*/
 		if (!isset($_POST['place_name'])) {
 			$this->error('未輸入地點名稱');
+		}
+
+		if (strlen($_POST['place_name']) > 30) {
+			$this->error('地點名稱最多30字');
 		}
 
 		// check shop status ?
@@ -104,7 +113,7 @@ class car_checkout {
 			} else {
 				// add room
 				$area = area::get_single($_SESSION['place']['area']);
-				if (!isset($area['name'])) {
+				if (!isset($area['id'])) {
 					// can't get area
 					$this->error('無法取得地點資訊，請重新選擇送餐地點<br>Error ID: [car-error-4]');
 				}
@@ -151,7 +160,7 @@ class car_checkout {
 
 			$my_place_id = $place['user_place_id'];
 
-			if (!place::update_user_place($my_place_id, $_POST['place_name'], $_POST['place_detail'])) {
+			if (!place::update_user_place($_SESSION['place']['my'], $_POST['place_name'], $_POST['place_detail'])) {
 				$this->error('無法更新地點資訊，請稍後再重新送出訂單');
 			}
 			// 	true -> update [user_place]

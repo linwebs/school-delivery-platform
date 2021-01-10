@@ -84,7 +84,7 @@ view::view('navbar');
 					<a onclick="history.go(-1)" class="btn btn-secondary no-radius login-btn"><i class="fas fa-caret-left"></i>
 						返回</a>
 				</div>
-				<?php if (!empty($data['meal']) && $data['shop']['status'] == '1') { ?>
+				<?php if (isset($_SESSION['user']['id']) && !empty($data['meal']) && $data['shop']['status'] == '1') { ?>
 					<div class="col-sm-12 col-md-6">
 						<a href="/car" class="btn btn-dark-green no-radius login-btn">
 							結帳 <i class="fas fa-caret-right"></i>

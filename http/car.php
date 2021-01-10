@@ -15,6 +15,11 @@ require_once FOLDER_PATH . 'database/place.php';
 
 class car {
 	public function __construct() {
+		if(!isset($_SESSION['user']['id'])) {
+			header('Location: /login');
+			die();
+		}
+
 		if (empty($_SESSION['place']['selected'])) {
 			header('Location: /place');
 			die();
