@@ -26,7 +26,7 @@ route::geth('/car/error', 'car_error');
 
 route::geth('/ticket', 'ticket');
 route::getpn('/ticket', 'ticket_detail', array('old', 'no_found'));
-route::postp('/ticket', 'ticket_status');
+route::postp('/ticket', 'ticket_change');
 route::get('/ticket/no_found', 'ticket/no_found');
 
 

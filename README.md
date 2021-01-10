@@ -1,5 +1,6 @@
 # School Delivery Platform
-Linweb 校園送餐平台
+Linweb 校園送餐平台  
+https://delivery.csie.linwebs.tw/
 
 > Linwebs 2021.1  
 > NCYU Database System Design
@@ -9,3 +10,6 @@ Linweb 校園送餐平台
 * Apache 2.4
 * MySQL 8
 * PHP 7.4
+
+## 建置框架
+Linwebs PHP Framework 2021

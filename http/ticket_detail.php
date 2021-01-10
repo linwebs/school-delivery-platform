@@ -12,7 +12,7 @@ class ticket_detail {
 			die();
 		}
 
-		$order_list = order::get_single_order($param);
+		$order_list = order::get_user_single_order($_SESSION['user']['id'], $param);
 
 		if (!isset($order_list['order_id'])) {
 			header('Location: /ticket/no_found');

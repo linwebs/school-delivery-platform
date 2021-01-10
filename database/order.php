@@ -56,7 +56,7 @@ class order {
 		}
 	}
 
-	public static function get_single_order($id) {
+	public static function get_user_single_order($user, $id) {
 		$sql = 'SELECT `order`.`id` AS `order_id`, `order`.`user_id` AS `user_id`, `order`.`status` AS `order_status`, `order`.`order_time`, `order`.`note` AS `order_note`, `shop`.`id` AS `shop_id`, `shop`.`name` AS `shop_name`, `delivery`.`name` AS `delivery_name`, `delivery`.`phone` AS `delivery_phone`, `order`.`user_place_id`, `user_place`.`name` AS `user_place_name`, `user_place`.`detail` AS `user_place_detail`, `place_room`.`name` AS `room_name`, `place_build`.`name` AS `build_name`, `place_area`.`name` AS `area_name` FROM ( `user_order` AS `order` LEFT JOIN `user` AS `delivery` ON `order`.`delivery_id` = `delivery`.`id` ), `shop`, `user_place`, `place_room`, `place_build`, `place_area` WHERE `order`.`id` = :id AND `order`.`shop_id` = `shop`.`id` AND `order`.`user_place_id` = `user_place`.`id` AND `user_place`.`place_id` = `place_room`.`id` AND `place_room`.`build_id` = `place_build`.`id` AND `place_build`.`area_id` = `place_area`.`id` ORDER BY `order_time` DESC';
 		try {
 			$conn = connect::connect();

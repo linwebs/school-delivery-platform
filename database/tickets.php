@@ -175,4 +175,18 @@ class tickets {
 			die('DB UPDATE Error: ' . $exception);
 		}
 	}
+
+	public static function change_user_tickets_status($id, $user, $status) {
+		$sql = 'UPDATE `user_order` SET `status` = :status WHERE `user_order`.`id` = :id AND `user_id` = :user';
+		try {
+			$conn = connect::connect();
+			$stmt = $conn->prepare($sql);
+			$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':user', $user, PDO::PARAM_INT);
+			$stmt->bindValue(':status', $status, PDO::PARAM_INT);
+			return $stmt->execute();
+		} catch (PDOException $exception) {
+			die('DB UPDATE Error: ' . $exception);
+		}
+	}
 }

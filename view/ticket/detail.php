@@ -18,6 +18,11 @@ view::view('navbar');
 					<div class="col-sm-12 col-md-9">
 						<div class="card">
 							<div class="card-body">
+								<?php if (isset($_SESSION['ticket_error'])) { ?>
+									<div class="alert alert-warning">
+										<?= $_SESSION['ticket_error'] ?>
+									</div>
+								<?php } ?>
 								<h5 class="card-title">訂單編號:
 									#<?= str_pad($data['order']['order_id'], 6, '0', STR_PAD_LEFT); ?></h5>
 								<p class="mb-1">狀態: <?= TICKET_STATUS[$data['order']['order_status']] ?></p>
@@ -70,6 +75,37 @@ view::view('navbar');
 								<p class="mb-1">外送費: <?= $data['price_delivery'] ?>元</p>
 								<p class="mb-1">總金額: <?= $data['price_total'] ?>元</p>
 								<p class="mb-3">訂單備註: <?= $data['order']['order_note'] ?></p>
+								<?php if ($data['order']['order_status'] == 5) { ?>
+									<form action="/ticket/<?= $data['order']['order_id'] ?>" method="post">
+										<input type="hidden" name="status" value="ticket_finish">
+										<p class="mb-3">變更訂單狀態:
+											<button type="button" class="btn btn-dark-green no-radius login-btn" data-bs-toggle="modal" data-bs-target="#submit-order-modal">
+												已領取餐點
+											</button>
+										</p>
+										<div class="modal fade" id="submit-order-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="modal-title">是否已領取餐點</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														確認餐點是否已領取
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary no-radius" data-bs-dismiss="modal">
+															返回
+														</button>
+														<button type="submit" class="btn btn-dark-green no-radius">
+															已領取餐點
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								<?php } ?>
 							</div>
 						</div>
 					</div>
@@ -83,3 +119,5 @@ view::view('navbar');
 	</div>
 <?php
 view::view('footer');
+
+unset($_SESSION['ticket_error']);
