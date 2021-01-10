@@ -75,4 +75,17 @@ class user {
 			die('DB SELECT Error: ' . $exception);
 		}
 	}
+
+	public static function get_single($id) {
+		$sql = 'SELECT `id`, `account`, `name`, `email`, `phone`, `type` FROM `user` WHERE `id` = :id';
+		try {
+			$conn = connect::connect();
+			$stmt = $conn->prepare($sql);
+			$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+			$stmt->execute();
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		} catch (PDOException $exception) {
+			die('DB SELECT Error: ' . $exception);
+		}
+	}
 }

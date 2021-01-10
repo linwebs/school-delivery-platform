@@ -2,6 +2,8 @@
 
 use view\view;
 
+http_response_code(403);
+
 ?>
 <?php view::view('header'); ?>
 <?php view::view('navbar'); ?>

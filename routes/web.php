@@ -4,9 +4,9 @@ use route\route;
 
 route::get('/', 'welcome');
 
-route::get('/login', 'login');
+route::geth('/login', 'login_page');
 route::post('/login', 'login');
-route::get('/register', 'register');
+route::geth('/register', 'register_page');
 route::post('/register', 'register');
 route::geth('/logout', 'logout');
 
@@ -23,6 +23,17 @@ route::postp('/meal', 'meal_add');
 route::geth('/car', 'car');
 route::post('/car', 'car_checkout');
 route::geth('/car/error', 'car_error');
+
+route::geth('/ticket', 'ticket');
+route::getpn('/ticket', 'ticket_detail', array('old', 'no_found'));
+route::postp('/ticket', 'ticket_status');
+route::get('/ticket/no_found', 'ticket/no_found');
+
+route::get('/tickets/all', 'tickets_all');
+route::geth('/tickets/my', 'tickets_my');
+
+route::geth('/account', 'account_main');
+route::geth('/account/change', 'account_change');
 
 // invalid
 route::get('/error_403', 'error_403');

@@ -1,7 +1,5 @@
 <?php
 
-//print_r($data);
-
 use view\view;
 
 view::view('header');

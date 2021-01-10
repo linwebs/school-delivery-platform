@@ -3,9 +3,6 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    ErrorDocument 403 /error_403
-    ErrorDocument 500 /error_500
-
     RewriteEngine On
 
     RewriteCond %{REQUEST_FILENAME} !-d

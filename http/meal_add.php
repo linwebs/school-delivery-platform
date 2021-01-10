@@ -63,6 +63,12 @@ class meal_add {
 
 		$meal = meal::get_single($param);
 
+		if (!isset($meal['status'])) {
+			$_SESSION['meal_alert'] = '無此餐點，請選擇其他餐點';
+			header('Location: /shop');
+			die();
+		}
+
 		if ($meal['status'] != '1') {
 			$_SESSION['meal_alert'] = '目前未提供此餐點，請選擇其他餐點';
 			header('Location: /meal/' . $param);

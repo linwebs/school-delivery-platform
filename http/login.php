@@ -14,6 +14,11 @@ class login {
 	private $type;
 
 	public function __construct() {
+		if(isset($_SESSION['user']['id'])) {
+			header('Location: /account');
+			die();
+		}
+
 		// login from post
 		if($this->login_from_post()) {
 			switch ($this->type) {
@@ -23,7 +28,7 @@ class login {
 					break;
 				case 2:
 					// delivery
-					header('Location: /home');
+					header('Location: /tickets/my');
 					break;
 				case 3:
 					// shop

@@ -4,16 +4,22 @@ namespace view;
 
 class view {
 	public static function view($view) {
-		require_once FOLDER_PATH . 'view/' . $view . '.php';
+		if (!@include_once FOLDER_PATH . 'view/' . $view . '.php') {
+			view::view('error_500');
+		}
 	}
 
 	public static function arr($view, $data) {
-		require_once FOLDER_PATH . 'view/' . $view . '.php';
+		if (!@include_once FOLDER_PATH . 'view/' . $view . '.php') {
+			view::view('error_500');
+		}
 	}
 
 	public static function func($view, $data) {
 		$data = $data();
-		require_once FOLDER_PATH . 'view/' . $view . '.php';
+		if (!@include_once FOLDER_PATH . 'view/' . $view . '.php') {
+			view::view('error_500');
+		}
 	}
 
 	public static function img_jpg($path, $file) {

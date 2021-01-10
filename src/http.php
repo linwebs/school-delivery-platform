@@ -2,14 +2,22 @@
 
 namespace http;
 
+use view\view;
+
 class http {
 	public static function http($http) {
-		require_once FOLDER_PATH . 'http/' . $http . '.php';
-		new $http();
+		if(@include_once FOLDER_PATH . 'http/' . $http . '.php') {
+			new $http();
+		} else {
+			view::view('error_500');
+		}
 	}
 
 	public static function param($http, $param) {
-		require_once FOLDER_PATH . 'http/' . $http . '.php';
-		new $http($param);
+		if(@include_once FOLDER_PATH . 'http/' . $http . '.php') {
+			new $http($param);
+		} else {
+			view::view('error_500');
+		}
 	}
 }

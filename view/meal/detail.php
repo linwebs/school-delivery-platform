@@ -64,7 +64,7 @@ view::view('navbar');
 						</select>
 					</div>
 					<div class="mb-3">
-						<label for="note" class="form-label">備註:</label>
+						<label for="note" class="form-label">餐點備註:</label>
 						<textarea class="form-control" id="note" name="note" rows="3"><?= $data['note'] ?></textarea>
 					</div>
 					<input type="hidden" name="shop" value="<?= $data['shop']['id'] ?>">

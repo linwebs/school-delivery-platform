@@ -27,7 +27,9 @@ class meal_detail {
 		$meal = meal::get_single($param);
 
 		if ($meal['status'] != '1') {
-			$_SESSION['meal_alert'] = '目前未提供此餐點，請選擇其他餐點';
+			// no this meal
+			header('Location: /shop');
+			die();
 		}
 
 		if (!isset($_SESSION['user']['id'])) {
