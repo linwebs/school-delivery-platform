@@ -1,30 +1,32 @@
 <?php
 
 use database\order;
+use database\tickets;
 use view\view;
 
 require_once FOLDER_PATH . 'database/order.php';
+require_once FOLDER_PATH . 'database/tickets.php';
 
-class ticket_detail {
+class order_detail {
 	public function __construct($param) {
 		if (!isset($_SESSION['user']['id'])) {
 			header('Location: /login');
 			die();
 		}
 
-		$order_list = order::get_single_order($param);
-
-		if (!isset($order_list['order_id'])) {
-			header('Location: /ticket/no_found');
-			die();
-		}
-
-		if($order_list['user_id'] != $_SESSION['user']['id']) {
+		if ($_SESSION['user']['type'] != '3') {
 			header('Location: /ticket');
 			die();
 		}
 
-		$meals = order::get_ticket_order_meal($order_list['order_id']);
+		$tickets = tickets::get_shop_single_tickets($param, $_SESSION['user']['id']);
+
+		if (!isset($tickets['order_id'])) {
+			header('Location: /order/no_found');
+			die();
+		}
+
+		$meals = order::get_ticket_order_meal($tickets['order_id']);
 
 		$price_meals = 0;
 
@@ -36,11 +38,12 @@ class ticket_detail {
 				$price_meals += $item['quantity'] * $item['price'];
 			}
 		}
+
 		$price_total = $price_meals + DELIVERY_FEE;
 
-		view::func('ticket/detail', function () use ($order_list, $meals, $price_meals, $price_total) {
+		view::func('order/detail', function () use ($tickets, $meals, $price_meals, $price_total) {
 			return [
-				'order' => $order_list,
+				'tickets' => $tickets,
 				'meal' => $meals,
 				'price_meals' => $price_meals,
 				'price_delivery' => DELIVERY_FEE,

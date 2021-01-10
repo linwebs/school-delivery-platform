@@ -23,13 +23,9 @@ view::view('navbar');
 					</div>
 					<div class="col-md-12 col-lg-8">
 						<h1 class="h2 mt-5">歡迎 <?= $_SESSION['user']['name'] ?></h1>
-						<a href="/tickets/new" class="btn btn-dark-green btn-lg no-radius m-3">
+						<a href="/order" class="btn btn-dark-green btn-lg no-radius m-3">
 							<i class="fas fa-ticket-alt"></i>
-							接新訂單
-						</a>
-						<a href="/tickets/my" class="btn btn-dark-green btn-lg no-radius m-3">
-							<i class="fas fa-clipboard-check"></i>
-							我的訂單
+							訂單列表
 						</a>
 						<a href="/account/change" class="btn btn-dark-green btn-lg no-radius m-3">
 							<i class="fas fa-user"></i>

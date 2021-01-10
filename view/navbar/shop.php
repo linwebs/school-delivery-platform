@@ -4,8 +4,7 @@ use database\tickets;
 
 include_once FOLDER_PATH . 'database/tickets.php';
 
-$navbar_my_tickets = tickets::get_my_tickets_count($_SESSION['user']['id']);
-$navbar_all_tickets = 0;
+$navbar_my_tickets = tickets::get_shop_tickets_count($_SESSION['user']['id']);
 ?>
 <nav class="navbar navbar-header sticky-top navbar-expand-lg navbar-light bg-white">
 	<div class="container">
@@ -23,10 +22,7 @@ $navbar_all_tickets = 0;
 					<a class="nav-link" aria-current="page" href="/">首頁</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/tickets/new">接新訂單 <!--span class="badge bg-green-5 no-radius" id="ticket-count"><?= $navbar_all_tickets ?></span--></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/tickets/my">已接訂單 <span class="badge bg-green-5 no-radius" id="ticket-count"><?= $navbar_my_tickets ?></span></a>
+					<a class="nav-link" href="/order">訂單列表 <span class="badge bg-green-5 no-radius" id="ticket-count"><?= $navbar_my_tickets ?></span></a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

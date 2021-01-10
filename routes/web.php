@@ -29,8 +29,17 @@ route::getpn('/ticket', 'ticket_detail', array('old', 'no_found'));
 route::postp('/ticket', 'ticket_status');
 route::get('/ticket/no_found', 'ticket/no_found');
 
-route::get('/tickets/all', 'tickets_all');
+
+// delivery
+route::getpn('/tickets', 'tickets_detail', array('my', 'new'));
+route::postpn('/tickets', 'tickets_change', array('my', 'new'));
+route::geth('/tickets/new', 'tickets_new');
 route::geth('/tickets/my', 'tickets_my');
+
+// shop
+route::geth('/order', 'order');
+route::getpn('/order', 'order_detail', array('my', 'no_found'));
+route::postp('/order', 'order_change');
 
 route::geth('/account', 'account_main');
 route::geth('/account/change', 'account_change');

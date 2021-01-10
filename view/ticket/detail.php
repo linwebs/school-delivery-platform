@@ -8,12 +8,12 @@ view::view('navbar');
 	<div class="container">
 		<div class="basic-area">
 			<div class="basic-area text-center">
-				<h1>目前訂單</h1>
+				<h1>已接的訂單</h1>
 			</div>
 			<div class="basic-area">
 				<div class="row ticket-list">
 					<div class="col-sm-12 col-md-3 shop-img">
-						<img src="/img/shop/<?= $data['order']['order_id'] ?>" class="img-fluid rounded ticket-img" alt="shop">
+						<img src="/img/shop/<?= $data['order']['shop_id'] ?>" class="img-fluid rounded ticket-img" alt="shop">
 					</div>
 					<div class="col-sm-12 col-md-9">
 						<div class="card">
@@ -26,6 +26,8 @@ view::view('navbar');
 									下單時間: <?= date('Y/m/d H:i:s', strtotime($data['order']['order_time'])) ?></p>
 								<p class="mb-1">
 									外送員: <?= (isset($data['order']['delivery_name'])) ? ($data['order']['delivery_name']) : ('無') ?></p>
+								<p class="mb-1">
+									外送員手機: <?= ($data['order']['delivery_phone']) ? ($data['order']['delivery_phone']) : ('無') ?></p>
 								<p class="mb-1">
 									送餐地點: <?= $data['order']['user_place_name'] ?>
 									<br />

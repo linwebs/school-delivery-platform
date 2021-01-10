@@ -15,4 +15,8 @@ define('TICKET_STATUS', array(0 => '訂單未成立', 1 => '新訂單', 2 => '�
 
 define('TICKET_STATUS_ACTIVE', array(1, 2, 3, 4, 5));
 
+define('TICKET_STATUS_NEED_DELIVERY', array(1, 2, 3));
+
+define('TICKET_STATUS_SHOP_SHOW', array(1, 2, 3));
+
 define('USER_TYPE', array(1 => '使用者', 2 => '外送員', 3 => '店家'));
