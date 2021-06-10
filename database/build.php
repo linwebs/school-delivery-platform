@@ -35,7 +35,6 @@ class build {
 		}
 	}
 
-
 	public static function get_single_from_id_area_id($id, $area) {
 		$sql = 'SELECT `place_build`.`id` AS `build_id`, `place_area`.`id` AS `area_id` FROM `place_build`, `place_area` WHERE `place_build`.`area_id` = `place_area`.`id` AND `place_build`.`id` = :build AND `place_area`.`id` = :area';
 		try {

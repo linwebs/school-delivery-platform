@@ -61,6 +61,20 @@ class place {
 		}
 	}
 
+	public static function get_my_place_from_name($user, $name) {
+		$sql = 'SELECT `place_id` FROM `user_place` WHERE `user_id` = :id AND `name` = :name';
+		try {
+			$conn = connect::connect();
+			$stmt = $conn->prepare($sql);
+			$stmt->bindValue(':id', $user, PDO::PARAM_INT);
+			$stmt->bindValue(':name', $name, PDO::PARAM_STR);
+			$stmt->execute();
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		} catch (PDOException $exception) {
+			die('DB SELECT Error: ' . $exception);
+		}
+	}
+
 	public static function add_user_place($user, $place, $name, $detail) {
 		$sql = 'INSERT INTO `user_place` (`id`, `user_id`, `place_id`, `name`, `detail`) VALUES (NULL, :user, :place, :name, :detail)';
 		try {

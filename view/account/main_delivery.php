@@ -29,7 +29,7 @@ view::view('navbar');
 						</a>
 						<a href="/tickets/my" class="btn btn-dark-green btn-lg no-radius m-3">
 							<i class="fas fa-clipboard-check"></i>
-							我的訂單
+							已接的訂單
 						</a>
 						<a href="/account/change" class="btn btn-dark-green btn-lg no-radius m-3">
 							<i class="fas fa-user"></i>

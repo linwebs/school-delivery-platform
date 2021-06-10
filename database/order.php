@@ -70,7 +70,7 @@ class order {
 	}
 
 	public static function get_ticket_order_meal($ticket) {
-		$sql = 'SELECT `order_meal`.`id` AS `meal_id`, `meal`.`name`, `meal`.`price`, `order_meal`.`quantity`, `order_meal`.`note` FROM `order_meal`, `meal` WHERE `order_meal`.`meal_id` = `meal`.`id` AND `order_meal`.`order_id` = :order';
+		$sql = 'SELECT `order_meal`.`id` AS `id`, `meal`.`id` AS `meal_id`, `meal`.`name`, `meal`.`price`, `order_meal`.`quantity`, `order_meal`.`note` FROM `order_meal`, `meal` WHERE `order_meal`.`meal_id` = `meal`.`id` AND `order_meal`.`order_id` = :order';
 		try {
 			$conn = connect::connect();
 			$stmt = $conn->prepare($sql);

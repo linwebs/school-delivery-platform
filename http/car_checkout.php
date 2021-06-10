@@ -108,7 +108,8 @@ class car_checkout {
 			}
 
 			$exist_room = room::get_room_from_name_build_id_area_id($_SESSION['place']['room'], $_SESSION['place']['build'], $_SESSION['place']['area']);
-			if (!isset($exist_room['place_room_id'])) {
+
+			if (isset($exist_room['place_room_id'])) {
 				$place_id = $exist_room['place_room_id'];
 			} else {
 				// add room

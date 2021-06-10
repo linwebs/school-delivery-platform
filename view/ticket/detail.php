@@ -8,7 +8,7 @@ view::view('navbar');
 	<div class="container">
 		<div class="basic-area">
 			<div class="basic-area text-center">
-				<h1>已接的訂單</h1>
+				<h1>我的訂單</h1>
 			</div>
 			<div class="basic-area">
 				<div class="row ticket-list">

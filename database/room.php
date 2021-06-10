@@ -50,4 +50,23 @@ class room {
 			die('DB INSERT Error: ' . $exception);
 		}
 	}
+
+	public static function get_name($id) {
+		$sql = 'SELECT `name` FROM `place_room` WHERE `id` = :id';
+		try {
+			$conn = connect::connect();
+			$stmt = $conn->prepare($sql);
+			$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+			$stmt->execute();
+
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			if($result) {
+				return $result['name'];
+			} else {
+				return null;
+			}
+		} catch (PDOException $exception) {
+			die('DB SELECT Error: ' . $exception);
+		}
+	}
 }
