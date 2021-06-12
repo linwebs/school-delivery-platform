@@ -116,4 +116,16 @@ class user {
 			die('DB SELECT Error: ' . $exception);
 		}
 	}
+
+	public static function logout_token($token) {
+		$sql = 'UPDATE `user_token` SET `enable` = 0 WHERE `user_token`.`token` = :token';
+		try {
+			$conn = connect::connect();
+			$stmt = $conn->prepare($sql);
+			$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+			return $stmt->execute();
+		} catch (PDOException $exception) {
+			die('DB SELECT Error: ' . $exception);
+		}
+	}
 }

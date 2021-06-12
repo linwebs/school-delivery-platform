@@ -62,7 +62,7 @@ class place {
 	}
 
 	public static function get_my_place_from_name($user, $name) {
-		$sql = 'SELECT `place_id` FROM `user_place` WHERE `user_id` = :id AND `name` = :name';
+		$sql = 'SELECT `id`, `place_id` FROM `user_place` WHERE `user_id` = :id AND `name` = :name';
 		try {
 			$conn = connect::connect();
 			$stmt = $conn->prepare($sql);

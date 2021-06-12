@@ -217,6 +217,28 @@ class tcp_multicast {
 										);
 									}
 									break;
+								case 'logout':
+									if (isset($json->token)) {
+										$login = new login();
+										$login_status = $login->logout($json->token);
+										if ($login_status) {
+											//print_r($login_status);
+											$send = $login_status;
+										} else {
+											$send = array(
+												'action' => 'logout',
+												'status' => 'error',
+												'msg' => '登出失敗'
+											);
+										}
+									} else {
+										$send = array(
+											'action' => 'logout',
+											'status' => 'error',
+											'msg' => '無法取得token'
+										);
+									}
+									break;
 
 								case 'send_ticket':
 									if(!isset($json->token)) {

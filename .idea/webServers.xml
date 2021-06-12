@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="c56cb814-03e7-4c1a-9a50-593f5e83565d" name="socket.delivery.csie.linwebs.tw" url="http://socket.delivery.csie.linwebs.tw/">
-        <fileTransfer rootFolder="/var/www/delivery_platform_socket" accessType="SFTP" host="linwebs.tw" port="22" sshConfigId="991b8a28-8ae7-4d1d-a421-7e8c4acbcee0" sshConfig="linwebs@linwebs.tw:22 key" keyPair="true">
+      <webServer id="c56cb814-03e7-4c1a-9a50-593f5e83565d" name="socket.delivery.csie.linwebs.tw" url="https://socket.delivery.csie.linwebs.tw/">
+        <fileTransfer rootFolder="/var/www/delivery_platform_socket" accessType="SFTP" host="linwebs.tw" port="22" sshConfigId="aca1ab9f-4995-4715-a373-fc2fdd91f097" sshConfig="linwebs@linwebs.tw:22 key" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

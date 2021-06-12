@@ -69,6 +69,20 @@ class order {
 		}
 	}
 
+	public static function get_user_single_order_from_turn($user, $turn) {
+		$sql = 'SELECT `order`.`id` AS `order_id`, `order`.`user_id` AS `user_id`, `order`.`status` AS `order_status`, `order`.`order_time`, `order`.`note` AS `order_note`, `shop`.`id` AS `shop_id`, `shop`.`name` AS `shop_name`, `delivery`.`name` AS `delivery_name`, `delivery`.`phone` AS `delivery_phone`, `order`.`user_place_id`, `user_place`.`name` AS `user_place_name`, `user_place`.`detail` AS `user_place_detail`, `place_room`.`name` AS `room_name`, `place_build`.`name` AS `build_name`, `place_area`.`name` AS `area_name` FROM ( `user_order` AS `order` LEFT JOIN `user` AS `delivery` ON `order`.`delivery_id` = `delivery`.`id` ), `shop`, `user_place`, `place_room`, `place_build`, `place_area` WHERE `order`.`shop_id` = `shop`.`id` AND `order`.`user_place_id` = `user_place`.`id` AND `user_place`.`place_id` = `place_room`.`id` AND `place_room`.`build_id` = `place_build`.`id` AND `place_build`.`area_id` = `place_area`.`id` AND `order`.`user_id` = :user ORDER BY `order_time` ASC LIMIT :turn,1';
+		try {
+			$conn = connect::connect();
+			$stmt = $conn->prepare($sql);
+			$stmt->bindValue(':user', $user, PDO::PARAM_INT);
+			$stmt->bindValue(':turn', $turn, PDO::PARAM_INT);
+			$stmt->execute();
+			return $stmt->fetch(PDO::FETCH_ASSOC);
+		} catch (PDOException $exception) {
+			die('DB SELECT Error: ' . $exception);
+		}
+	}
+
 	public static function get_ticket_order_meal($ticket) {
 		$sql = 'SELECT `order_meal`.`id` AS `id`, `meal`.`id` AS `meal_id`, `meal`.`name`, `meal`.`price`, `order_meal`.`quantity`, `order_meal`.`note` FROM `order_meal`, `meal` WHERE `order_meal`.`meal_id` = `meal`.`id` AND `order_meal`.`order_id` = :order';
 		try {
@@ -90,7 +104,12 @@ class order {
 			$stmt = $conn->prepare($sql);
 			$stmt->bindValue(':user', $user, PDO::PARAM_INT);
 			$stmt->execute();
-			return $stmt->fetch(PDO::FETCH_ASSOC)['COUNT(*)'];
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			if($result) {
+				return $result['COUNT(*)'];
+			} else {
+				return null;
+			}
 		} catch (PDOException $exception) {
 			die('DB SELECT Error: ' . $exception);
 		}

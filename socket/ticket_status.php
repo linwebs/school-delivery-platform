@@ -28,7 +28,7 @@ class ticket_status {
 			return $this->json_error();
 		}
 
-		$order_list = order::get_user_single_order($user['id'], $order);
+		$order_list = order::get_user_single_order_from_turn($user['id'], $order-1);
 
 		if (!isset($order_list['order_id'])) {
 			$this->msg = '此訂單不存在';

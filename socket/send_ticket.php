@@ -77,7 +77,7 @@ class send_ticket {
 			return $this->json_error();
 		}
 
-		if ($build_id != $shop['area_id']) {
+		if ($area_id != $shop['area_id']) {
 			// shop not in this area
 			$this->msg = '餐點的商店不在外送範圍內';
 			return $this->json_error();
@@ -120,7 +120,7 @@ class send_ticket {
 
 		$place_id = 0;
 		if (isset($user_place['place_id'])) {
-			$place_id = $user_place['place_id'];
+			$place_id = $user_place['id'];
 		} else {
 			// no user place
 			$place_id = place::add_user_place($user['id'], $exist_room['place_room_id'], $this->place_name, '');
@@ -139,6 +139,10 @@ class send_ticket {
 			return $this->json_error();
 		}
 
+		echo 'user_id: ' . $user['id'] . "\n";
+		echo 'shop: ' . $shop['id'] . "\n";
+		echo 'place_id: ' . $place_id . "\n";
+
 		// add order to [user_order] => get_id
 		$order = order::add_order($user['id'], $shop['id'], $place_id, '');
 
@@ -155,7 +159,14 @@ class send_ticket {
 		}
 
 
-		return array('action' => 'send_ticket', 'status' => 'error', 'msg' => '成功送出訂單', 'id' => $order);
+		$user_order_count = order::get_user_ticket_count($user['id']);
+
+		if(!$user_order_count) {
+			$this->msg = '查詢訂單筆數失敗';
+			return $this->json_error();
+		}
+
+		return array('action' => 'send_ticket', 'status' => 'ok', 'msg' => '成功送出訂單', 'id' => $user_order_count);
 	}
 
 	private function error($msg) {

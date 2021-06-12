@@ -89,6 +89,22 @@ class login {
 		}
 	}
 
+	public function logout($token):array {
+		if(user::logout_token($token)) {
+			return array(
+				'action' => 'logout',
+				'status' => 'ok',
+				'msg' => '登出成功'
+			);
+		} else {
+			return array(
+				'action' => 'logout',
+				'status' => 'error',
+				'msg' => '登出失敗'
+			);
+		}
+	}
+
 	/**
 	 * Login success return
 	 * @return array
